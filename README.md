@@ -238,3 +238,12 @@ a. `SIZE`, `RANGE`, `SCALE` should not be pre-defined as a static method. The si
 b. Function `exporting()` should be open or close by user's command, like allow user to add an argument `-l` to export csv files.
 
 c. Allow users to import a file contains matrix
+
+
+# Update Log
+
+2020-08-13: First Version
+
+2020-08-17: update `REAEME.md` and optimize `eliminate.c`
+
+If `multi` == 0, will not do elimination anymore in the current row. Optimization of time:  `O(n)`(if `multi` == 0)
