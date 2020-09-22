@@ -4,10 +4,10 @@ void calculate(int nthreads) {
     if (nthreads == 1) {
         for (int i = SIZE - 1; i > -1; i--) {
             // case matrix[i][i] == 0 is already rejected while eliminating
-            float curans = (float)vec[i][0] / matrix[i][i];
+            double curans = (double)vec[i][0] / matrix[i][i];
             answers[i][0] = curans;
             for (int j = i - 1; j > -1; j--) {
-                float divider = (float)matrix[j][i] / matrix[i][i];
+                double divider = (double)matrix[j][i] / matrix[i][i];
                 vec[j][0] -= vec[i][0] * divider;
             }
         }
@@ -15,26 +15,26 @@ void calculate(int nthreads) {
     else {
         for (int i = SIZE - 1; i > -1; i--) {
             // case matrix[i][i] == 0 is already rejected while eliminating
-            float curans = (float)vec[i][0] / matrix[i][i];
+            double curans = (double)vec[i][0] / matrix[i][i];
             answers[i][0] = curans;
 #pragma omp parallel for num_threads(nthreads)
             for (int j = i - 1; j > -1; j--) {
-                float divider = (float)matrix[j][i] / matrix[i][i];
+                double divider = (double)matrix[j][i] / matrix[i][i];
                 vec[j][0] -= vec[i][0] * divider;
             }
         }
     }
 }
 
-void exporting(float* arr_2d, int rownum, int colnum, char* fname) {
+void exporting(double* arr_2d, int rownum, int colnum, char* fname) {
     // save in csv mode, split by ','
     // 2d array visiting solution: https://stackoverflow.com/questions/16724368/how-to-pass-a-2d-array-by-pointer-in-c
     FILE* fp = NULL;
     fp = fopen(fname, "w");
-    float* p = (float*)arr_2d;
+    double* p = (double*)arr_2d;
     for (int i = 0; i < rownum; i++) {
         for (int j = 0; j < colnum; j++) {
-            float ele = p[i * colnum + j];
+            double ele = p[i * colnum + j];
             fprintf(fp, "%f,", ele);
         }
         fprintf(fp, "\n");

@@ -88,7 +88,7 @@ include all common reference. I use a static size instead of a dynamic one.If yo
 
 ## generator.c
 
-`matrix_generator(int nthreads)` generates a random matrix(do change with global 2d array `float matrix[SIZE][SIZE]`).
+`matrix_generator(int nthreads)` generates a random squared matrix(do change with global 2d array `double matrix[SIZE][SIZE]`)
 
 
 `vector_generator(int nthreads)` generates a random vector(do change with global 2d array `vec[SIZE][1]`).
@@ -109,7 +109,7 @@ include all common reference. I use a static size instead of a dynamic one.If yo
 
 ## main.c
 
-`void calculate(int nthreads)` calculates the matrix and put the answer in global 2d array `float answers[SIZE][1]`
+`void calculate(int nthreads)` calculates the matrix and put the answer in global 2d array `double answers[SIZE][1]`
 
 `void exporting(void* arr_2d, int rownum, int colnum, char* fname)` export a 2d array to a file.
 
@@ -247,3 +247,5 @@ c. Allow users to import a file contains matrix
 2020-08-17: update `REAEME.md` and optimize `eliminate.c`
 
 If `multi` == 0, will not do elimination anymore in the current row. Optimization of time:  `O(n)`(if `multi` == 0)
+
+2020-09-13: update instruction. The matrix we generated is a squared matrix (length = height)

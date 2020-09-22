@@ -10,15 +10,15 @@
 #define SIZE 3
 // the random number will be generated in range [-RANGE, RANGE]
 #define RANGE 3
-// divide the generated number, converted it into float. For example, if range = 10 and SCALE = 10, random number will between [-, 1]
+// divide the generated number, converted it into double. For example, if range = 10 and SCALE = 10, random number will between [-, 1]
 #define SCALE 1
 
 clock_t start_t,finish_t;
 double total_t;
 
-float matrix[SIZE][SIZE];
-float vec[SIZE][1];
-float answers[SIZE][1];
+double matrix[SIZE][SIZE];
+double vec[SIZE][1];
+double answers[SIZE][1];
 // generate matrix with random number. input: number of thread
 extern void matrix_generator(int);
 extern void vector_generator(int);

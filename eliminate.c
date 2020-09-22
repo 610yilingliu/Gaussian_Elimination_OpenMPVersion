@@ -1,8 +1,8 @@
 #include "heads.h"
 
 void eliminate(int base, int target, int col) {
-    float base_num = matrix[base][col];
-    float multi = (float)matrix[target][col] / base_num;
+    double base_num = matrix[base][col];
+    double multi = (double)matrix[target][col] / base_num;
     // start from col to reduce time complexity.(item before col is already become 0) 
     if(multi != 0){
         for (int i = col; i < SIZE; i++) {

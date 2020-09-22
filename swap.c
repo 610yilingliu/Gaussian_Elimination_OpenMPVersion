@@ -5,7 +5,7 @@ int find_maxrow(int nthreads, int col) {
         int mx = 0;
         int idx = 0;
         for (int i = col; i < SIZE; i++) {
-            float cur = abs(matrix[i][col]);
+            double cur = abs(matrix[i][col]);
             if (cur > mx) {
                 mx = cur;
                 idx = i;
@@ -35,14 +35,14 @@ int find_maxrow(int nthreads, int col) {
         {
             int thread_id = omp_get_thread_num();
             for (int i = thread_id + col; i < SIZE; i += jump) {
-                float cur = abs(matrix[i][col]);
+                double cur = abs(matrix[i][col]);
                 if (cur > storage[thread_id]) {
                     indexes[thread_id] = i;
                     storage[thread_id] = cur;
                 }
             }
         }
-        float mx = 0;
+        double mx = 0;
         int idx = 0;
         for (int i = 0; i < nthreads; i++) {
             if (storage[i] > mx) {
@@ -64,12 +64,12 @@ int find_maxrow(int nthreads, int col) {
 void swap(int a, int b) {
     if (a != b) {
         for (int i = 0; i < SIZE; i++) {
-            float tmp = matrix[a][i];
+            double tmp = matrix[a][i];
             matrix[a][i] = matrix[b][i];
             matrix[b][i] = tmp;
 
         }
-        float tmp = vec[a][0];
+        double tmp = vec[a][0];
         vec[a][0] = vec[b][0];
         vec[b][0] = tmp;
     }
