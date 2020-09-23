@@ -71,7 +71,7 @@ int main(int argc, char* argv[]) {
         if (argc == 3 && (argv[1][0] == '-' && argv[1][1] == 'p')){
             
             for(int i = 0; i < strlen(argv[2]); i++){
-                if (argv[2][i] < '0' || argv[2][i] > '9') {
+                if (argv[2][i] < '1' || argv[2][i] > '9') {
                     printf("Invalid argument!\n");
                     printf("%s\n", argv[2][i]);
                     printf("%i\n", strlen(argv[2]));
